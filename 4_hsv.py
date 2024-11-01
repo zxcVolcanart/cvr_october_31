@@ -78,6 +78,7 @@ while True:
 
             cv2.putText(frame, str(a), (l, t), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
             cv2.rectangle(frame, (l, t), (l + w, t + h), (0, 255, 0), 2)
+            cv2.circle(frame, (l + w // 2, t + h // 2), 5, (0, 255, 0), 15)
 
     # print("=====================")
     # break
