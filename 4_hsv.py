@@ -3,7 +3,8 @@ import cv2
 
 cv2.namedWindow("mask")
 
-
+lh, ls, lv = (72, 75, 0)
+hh, hs, hv = (105, 121, 255)
 def nothing(x):
     pass
 
@@ -14,12 +15,12 @@ def nothing(x):
 #H - high (верхняя граница)
 
 
-cv2.createTrackbar("lh", "mask", 0, 255, nothing)
-cv2.createTrackbar("ls", "mask", 0, 255, nothing)
-cv2.createTrackbar("lv", "mask", 0, 255, nothing)
-cv2.createTrackbar("hh", "mask", 255, 255, nothing)
-cv2.createTrackbar("hs", "mask", 255, 255, nothing)
-cv2.createTrackbar("hv", "mask", 255, 255, nothing)
+cv2.createTrackbar("lh", "mask", lh, 255, nothing)
+cv2.createTrackbar("ls", "mask", ls, 255, nothing)
+cv2.createTrackbar("lv", "mask", lv, 255, nothing)
+cv2.createTrackbar("hh", "mask", hh, 255, nothing)
+cv2.createTrackbar("hs", "mask", hs, 255, nothing)
+cv2.createTrackbar("hv", "mask", hv, 255, nothing)
 
 cam = cv2.VideoCapture(0)
 
@@ -41,6 +42,8 @@ while True:
     hh = cv2.getTrackbarPos("hh", "mask")
     hs = cv2.getTrackbarPos("hs", "mask")
     hv = cv2.getTrackbarPos("hv", "mask")
+
+    #(72, 75, 0) (105, 121, 255)
 
     mask = cv2.inRange(hsv, (lh, ls, lv), (hh, hs, hv))
 
